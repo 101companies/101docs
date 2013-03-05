@@ -6,7 +6,7 @@ abstract FeatureSpec
       ManyCompanies
     xor FlatOrHierachicalCompanies
       FlatCompanies
-      HierachicalCompanies
+      HierarchicalCompanies
     ConflictOfInterests ?
     SalaryAlignment ?
 
