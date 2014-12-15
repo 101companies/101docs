@@ -64,4 +64,4 @@ crontab -e
 0 23 * * * cd /home/worker/101worker && make report
 
 TODO: 
-Martin, explain how to configure services on Apache
+Kevin/Martin, explain how to configure services on Apache
