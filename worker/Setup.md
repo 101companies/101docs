@@ -4,7 +4,7 @@ https://github.com/101companies/101worker/blob/master/README.md
 The following installation guide assumes the usage of Ubuntu Linux. MacOs users should find 
 the packages themselves. Windows is not supported at this point.
 
-== Install Ubuntu Linux ==
+*Install Ubuntu Linux*
 
 sudo apt-get install git
 sudo apt-get install openjdk-7-jdk openjdk-7-jre-lib 
@@ -26,7 +26,7 @@ the full list of modules is configured
 https://github.com/101companies/101worker/blob/master/configs/production.json
 
 
-Fixing issues step-by-step
+*Fixing issues step-by-step*
 
 sudo pip install mailer
 sudo pip install jinja2
