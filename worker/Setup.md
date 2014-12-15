@@ -4,16 +4,15 @@ https://github.com/101companies/101worker/blob/master/README.md
 The following installation guide assumes the usage of Ubuntu Linux. MacOs users should find 
 the packages themselves. Windows is not supported at this point.
 
-*Install Ubuntu Linux*
+**Install Ubuntu Linux**
 
-sudo apt-get install git
-sudo apt-get install openjdk-7-jdk openjdk-7-jre-lib 
-sudo apt-get install haskell-platform 
-sudo apt-get install php5 
-sudo apt-get install python-pip
-sudo apt-get install gcc python-dev r-recommended
-
-sudo pip install nltk
+* sudo apt-get install git
+* sudo apt-get install openjdk-7-jdk openjdk-7-jre-lib 
+* sudo apt-get install haskell-platform 
+* sudo apt-get install php5 
+* sudo apt-get install python-pip
+* sudo apt-get install gcc python-dev r-recommended
+* sudo pip install nltk
 
 git clone https://github.com/101companies/101worker
 cd 101worker
@@ -26,24 +25,23 @@ the full list of modules is configured
 https://github.com/101companies/101worker/blob/master/configs/production.json
 
 
-*Fixing issues step-by-step*
+**Fixing issues step-by-step**
 
-sudo pip install mailer
-sudo pip install jinja2
-sudo pip install simplejson html2text inflect
-
-sudo pip install sqlparse tinycss pymongo
+* sudo pip install mailer
+* sudo pip install jinja2
+* sudo pip install simplejson html2text inflect
+* sudo pip install sqlparse tinycss pymongo
 
 cabal update (get's the package list, needed for the valrious Haskell-based tools)
 
-sudo apt-get install mono-complete
+* sudo apt-get install mono-complete
 
 DB Username & Password - put into ENV variable
 
 sudo vi /etc/environment
 
-MONGODB_USER='CONSULT PRIVATE DOC'
-MONGODB_PWD='CONSULT PRIVATE DOC'
+* MONGODB_USER='CONSULT PRIVATE DOC'
+* MONGODB_PWD='CONSULT PRIVATE DOC'
 
 In case pull101 fails -- go into the admin panel of the 101wiki and check that there 
 are no zombie contributions that don't exist on github. Normally, this can be
