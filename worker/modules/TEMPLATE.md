@@ -14,7 +14,7 @@ This is so that other people can understand what your module's job is without ha
 
 # JUSTIFICATION OF EXISTENCE
 
-Why your module is necessary and shouldn't be kicked out of the production cycle and `git rm -rf`'d *right now*, like the waste of CPU time it is. Keep this kinda short too, because what your module does
+Why your module is necessary and shouldn't be kicked out of the production cycle and `git rm -rf`'d *right now*, like the waste of CPU time it is. Keep this kinda short too and don't repeat things from your description.
 
 This is to aid finding obsoleted modules later.
 
