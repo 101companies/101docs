@@ -61,6 +61,13 @@ A bunch of modules don't exit successfully and need to be fixed:
 * [integrate](https://github.com/101companies/101worker/tree/master/modules/integrate)
 
 
+### Fix `integrate` in Particular
+
+The [integrate module](https://github.com/101companies/101worker/tree/master/modules/integrate) needlessly downloads and processes the same data on every run, produces [over 10,000 lines of log](http://worker.101companies.org/logs/2015-04-09-03-02/integrate.log) and then exits unsuccessfully. To add insult to injury, it might be the slowest program in the universe, [taking up 60% of the entire runtime of 101worker](http://worker.101companies.org/logs/2015-04-09-03-02/report.html) to do absolutely nothing, since its input data never changes.
+
+Somebody should go and make this module talk less and make it incremental by checking its input before it goes to re-derive the same data over and over again.
+
+
 ## Refactor Modules
 
 Modules need to stop using the deprecated [101meta](https://github.com/101companies/101worker/tree/master/libraries/101meta) and [Makefile.vars](https://github.com/101companies/101worker/tree/master/modules/Makefile.vars) and instead use [meta101](https://github.com/101companies/101worker/tree/master/libraries/meta101) and [environment variables](https://github.com/101companies/101worker/tree/master/configs/env). This will make them incremental and testable.
