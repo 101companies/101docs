@@ -20,6 +20,8 @@ but a secondary one in the view of extra tool support helping with the use of th
 [101companies:Explorer](http://101companies.org/resources?format=html&wikititle=@project) provides support for 
 authoring rules in an interactive manner so that the notation does not need to be manipulated directly.
 
+The 101worker has a specific python library that handles the language. It will be called during the execution of the worker by multiple modules. You can fine the libarary in the 101worker repo(https://github.com/101companies/101worker/tree/master/libraries/meta101)
+
 
 ## Constraints 
 
