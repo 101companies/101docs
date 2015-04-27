@@ -59,7 +59,6 @@ the suffix (typically, the extension) of a filename.
 * **nature** for association of file nature, e.g., binary for use by the 101companies:Explorer.
 * **geshi** for association with a language code as used when rendering with Technology:GeSHi.
 * **locator** for association with an executable to be used as fragment locator.
-* **validator** for association with an executable to be used as validator.
 * **dominator** meta-metadata for sorting out priorities.
 * **relevance** metadata for indicating the importance of a file.
 
@@ -362,12 +361,12 @@ Right now the [101worker](https://github.com/101companies/101worker) supports si
 * [XSDValidator](https://github.com/101companies/101worker/tree/master/validators/XSDValidator) files with suffix `.xsd` contain `XSD`.
 
 
-The [validator](https://github.com/101companies/101worker/tree/master/validators) is an executable that is applied to the file in question. It can be coded in any language of choice as long as the name of the executable is `validator`. As an example, we use a validator for `Java`, i.e., [Technology:JValidator](https://github.com/101companies/101worker/tree/master/validators/JValidator), which is a `101technology`:
+The [validator](https://github.com/101companies/101worker/tree/master/validators) is an executable that is applied to the file in question. It can be coded in any language of choice as long as the name of the executable is `validator`. The aim of the process is to validate if the file in question is really of the assigned language. It decides which validator to execute by the metadate-language key. Therefore the follow rule, that happens to assign the language Java to files with the ending ".java", will execute the validator for the Java language. The validators can be found in the validator folder (https://github.com/101companies/101worker/tree/master/validators/) of the 101worker and the folder name is the name of the language. Hence follow rule would tell the 101validator (https://github.com/101companies/101worker/tree/master/modules/validate101meta) module execute the validator/Java/validator file:
 
 ```
 { 
   "suffix" : ".java", 
-  "metadata" : { "validator" : "JValidator" }
+  "metadata" : { "language" : "Java" }
 } 
 ```
 
