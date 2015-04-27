@@ -1,5 +1,9 @@
 # Papers related to the 101 project
 
+These are published papers discussing aspects of the 101 project.
+
+See also [the list of theses (student work)](../theses) on the 101 project.
+
 * An introductory paper on the 101 project; it's not very technical or completely representative of what's 101 today, but it generally motivates the project: [101companies: a community project on software technologies and software languages](http://softlang.uni-koblenz.de/101companies/inauguration/) by Jean-Marie Favre, Ralf Lämmel, Thomas Schmorleiz, Andrei Varanovich; Proceeding of TOOLS 2012.
 * A case study in the kind of software reverse engineering that is enabled by the 101 project; the case study combines data extracted by 101worker modules from source-code files and the 101wiki: [Comparison of Feature Implementations across Languages, Technologies, and Styles](http://softlang.uni-koblenz.de/101metrics/) by Ralf Lämmel, Martin Leinberger, Thomas Schmorleiz, Andrei Varanovich; Proceedings of CSMR-WCRE 2014.
 * A readable introduction to the notion of "software chrestomathy", thereby relating the 101 project to other similar projects and pointing out the potential benefits of such chrestomathies as well as involved practical, educational and research challenges: [Software chrestomathies](http://softlang.uni-koblenz.de/chrestomathy/) by Ralf Lämmel; Science of Computer Programming Journal, 2015.
