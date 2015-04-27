@@ -20,7 +20,6 @@ The 101 is mainly on GitHub these days.
 
 ## Possibly obsolete repos
 
-* [101test](https://github.com/101companies/101test)
 * [101backup](https://github.com/101companies/101backup)
 * [101dev](https://github.com/101companies/101dev)
 * [101wiki](https://github.com/101companies/101wiki)
