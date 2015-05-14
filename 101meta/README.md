@@ -350,7 +350,7 @@ In this context, if not earlier, the question may arise as to whether tags may a
 ### Validators:
 
 As another form of metadata, a [validator](https://github.com/101companies/101worker/tree/master/validators) may be associated with each file. The meaning of validation is here that matched files are to be validated to essentially verify assumptions implied by matching. For instance, we can be reasonably sure that files with suffix `.java` contain `Java` source code, but if we wanted to validate this assumption, then we may register a [validator](https://github.com/101companies/101worker/tree/master/validators). 
-To avoid Code-Injection and make the architecture of the [101worker](https://github.com/101companies/101worker) cleaner these executables can be found in [validators](https://github.com/101companies/101worker/tree/master/validators). The validators are plugged into the worker and the assigned language will determine which validator to execute. Follow validators are right now available:
+To avoid Code-Injection and make the architecture of the [101worker](https://github.com/101companies/101worker) cleaner these executables are plugged into the  [101worker dir](https://github.com/101companies/101worker/tree/master/validators) and can be referenced over language. Right now follow validators are avaliable:
 
 * [CSharp](https://github.com/101companies/101worker/tree/master/validators/CSharp) files with suffix `.cs` contain `C#`.
 * [HTML](https://github.com/101companies/101worker/tree/master/validators/HTML) files with suffix `.html` contain `JTidy`.
@@ -359,9 +359,9 @@ To avoid Code-Injection and make the architecture of the [101worker](https://git
 * [XML](https://github.com/101companies/101worker/tree/master/validators/XML) files with suffix `.xml` contain `XML`.
 * [XSD](https://github.com/101companies/101worker/tree/master/validators/XSD) files with suffix `.xsd` contain `XSD`.
 
-If there is not validator for the language in question no validation proccess will take place.
+If there is no validator for the language in question the validation proccess won't take place.
 
-The [validator](https://github.com/101companies/101worker/tree/master/validators) is an executable that is applied to the file in question. It can be coded in any language of choice as long as the name of the executable is `validator`.It decides which validator to execute by the metadate-language key. Therefore the follow rule, that happens to assign the language Java to files with the ending ".java", will execute the validator for the Java language. The validators can be found in the validator [folder] (https://github.com/101companies/101worker/tree/master/validators/) of the 101worker and the folder name is the name of the language. Hence follow rule would tell the [101validator] (https://github.com/101companies/101worker/tree/master/modules/validate101meta) module execute the validator/Java/validator file:
+A [validator](https://github.com/101companies/101worker/tree/master/validators) is an executable that is applied to the file in question. It can be coded in any language of choice as long as the name of the executable is `validator`. The [validate101meta module](https://github.com/101companies/101worker/tree/master/modules/validate101meta)  is responsible for excecuting the validators. It decides which validator to execute by the metadate-language key. Therefore the follow rule, that happens to assign the language Java to files with the ending ".java", will execute the validator for the Java language:
 
 ```
 { 
@@ -370,7 +370,7 @@ The [validator](https://github.com/101companies/101worker/tree/master/validators
 } 
 ```
 
-It essentially parses the source code, it does not attempt compilation and it does not enforce any static semantics rules. Zero exit code is to be interpreted as successful validation and non-zero exit code as failure. Validation must not be confused with the predicate form of constraint as validation is applied past successful rule matching, whereas constraint checking is part of matching itself. The `101companies:Explorer` leverages validation in a manner, that all failed validation is highlighted to receive the attention of the user, thereby suggesting eventual revision of the relevant rule for matching or making a change to the relevant file or its filename.
+A validator essentially parses the source code, it does not attempt compilation and it does not enforce any static semantics rules. Zero exit code is to be interpreted as successful validation and non-zero exit code as failure. Validation must not be confused with the predicate form of constraint as validation is applied past successful rule matching, whereas constraint checking is part of matching itself. The `101companies:Explorer` leverages validation in a manner, that all failed validation is highlighted to receive the attention of the user, thereby suggesting eventual revision of the relevant rule for matching or making a change to the relevant file or its filename.
 
 ## extractors:
 
