@@ -442,4 +442,4 @@ Every predicate has a predicate description that informs the [predicates101meta]
 	"metadata" : [] 	
  }
 ```
-Further reading: [predicates description](https://github.com/101companies/101worker/blob/master/predicates/readme.md)
+Further reading: [predicates description](https://github.com/101companies/101worker/blob/master/predicates/README.md)
