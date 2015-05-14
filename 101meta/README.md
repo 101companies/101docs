@@ -350,16 +350,16 @@ In this context, if not earlier, the question may arise as to whether tags may a
 ### Validators:
 
 As another form of metadata, a [validator](https://github.com/101companies/101worker/tree/master/validators) may be associated with each file. The meaning of validation is here that matched files are to be validated to essentially verify assumptions implied by matching. For instance, we can be reasonably sure that files with suffix `.java` contain `Java` source code, but if we wanted to validate this assumption, then we may register a [validator](https://github.com/101companies/101worker/tree/master/validators). 
-To avoid Code-Injection and make the architecture of the [101worker](https://github.com/101companies/101worker) cleaner these executables can be found in [validators](https://github.com/101companies/101worker/tree/master/validators). To let a rule execute a specific validator it has to assign the directory name in [../validators/"validator keyword"](https://github.com/101companies/101worker/tree/master/validators) directory.
-Right now the [101worker](https://github.com/101companies/101worker) supports six kinds of validators for the different types of data:
+To avoid Code-Injection and make the architecture of the [101worker](https://github.com/101companies/101worker) cleaner these executables can be found in [validators](https://github.com/101companies/101worker/tree/master/validators). The validators are plugged into the worker and the assigned language will determine which validator to execute. Follow validators are right now available:
 
-* [CSharpValidator](https://github.com/101companies/101worker/tree/master/validators/CSharpValidator) files with suffix `.cs` contain `C#`.
-* [JTidyValidator](https://github.com/101companies/101worker/tree/master/validators/JTidyValidator) files with suffix `.html` contain `JTidy`.
-* [JValidator](https://github.com/101companies/101worker/tree/master/validators/JValidator) files with suffix `.java` contain `Java`.
-* [W3CValidator](https://github.com/101companies/101worker/tree/master/validators/W3CValidator) files with suffix `.html` contain `CSS`.
-* [XMLValidator](https://github.com/101companies/101worker/tree/master/validators/XMLValidator) files with suffix `.xml` contain `XML`.
-* [XSDValidator](https://github.com/101companies/101worker/tree/master/validators/XSDValidator) files with suffix `.xsd` contain `XSD`.
+* [CSharp](https://github.com/101companies/101worker/tree/master/validators/CSharp) files with suffix `.cs` contain `C#`.
+* [HTML](https://github.com/101companies/101worker/tree/master/validators/HTML) files with suffix `.html` contain `JTidy`.
+* [Java](https://github.com/101companies/101worker/tree/master/validators/Java) files with suffix `.java` contain `Java`.
+* [CSS](https://github.com/101companies/101worker/tree/master/validators/CSS) files with suffix `.html` contain `CSS`.
+* [XML](https://github.com/101companies/101worker/tree/master/validators/XML) files with suffix `.xml` contain `XML`.
+* [XSD](https://github.com/101companies/101worker/tree/master/validators/XSD) files with suffix `.xsd` contain `XSD`.
 
+If there is not validator for the language in question no validation proccess will take place.
 
 The [validator](https://github.com/101companies/101worker/tree/master/validators) is an executable that is applied to the file in question. It can be coded in any language of choice as long as the name of the executable is `validator`.It decides which validator to execute by the metadate-language key. Therefore the follow rule, that happens to assign the language Java to files with the ending ".java", will execute the validator for the Java language. The validators can be found in the validator [folder] (https://github.com/101companies/101worker/tree/master/validators/) of the 101worker and the folder name is the name of the language. Hence follow rule would tell the [101validator] (https://github.com/101companies/101worker/tree/master/modules/validate101meta) module execute the validator/Java/validator file:
 
