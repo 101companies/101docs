@@ -379,6 +379,7 @@ A fact [extractor](https://github.com/101companies/101worker/tree/master/extract
 There is one [extractor](https://github.com/101companies/101worker/tree/master/extractors) for supporting ten different types of source code files:
 
 * [../CSharp/extractor](https://github.com/101companies/101worker/tree/master/extractors/CSharp) extracts `C#` files.
+* * [../CSS/extractor](https://github.com/101companies/101worker/tree/master/extractors/CSS) extracts `CSS` files.
 * [../HTML/extractor](https://github.com/101companies/101worker/tree/master/extractors/HTML) extracts `HTML` files.
 * [../Haskell/extractor](https://github.com/101companies/101worker/tree/master/extractors/Haskell) extracts `Haskell` files.
 * [../JSON/extractor](https://github.com/101companies/101worker/tree/master/extractors/JSON) extracts `JSON` files.
