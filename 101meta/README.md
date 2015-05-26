@@ -80,7 +80,7 @@ Another part in processing the [Language:101meta](#Language:101meta) is that we 
 }
 ```
 
-Next we describe what is going to happen is a fact extraction on the files. This will take place in the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module. There are several kinds of [extractors](https://github.com/101companies/101worker/tree/master/extractor) that are plugged into the [101worker](https://github.com/101companies/101worker/) and are referenced over the [language keyword](* **language**) inside the metadata values. The [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module will now simply observe the language of an artefact, by using the result of [matches101meta](https://github.com/101companies/101worker/tree/master/modules/matches101meta) module, and execute the right [extractor](https://github.com/101companies/101worker/tree/master/extractor) module.
+Next we describe what is going to happen is a fact extraction on the files. This will take place in the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module. There are several kinds of [extractors](https://github.com/101companies/101worker/tree/master/extractors) that are plugged into the [101worker](https://github.com/101companies/101worker/) and are referenced over the [language keyword](* **language**) inside the metadata values. The [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module will now simply observe the language of an artefact, by using the result of [matches101meta](https://github.com/101companies/101worker/tree/master/modules/matches101meta) module, and execute the right [extractor](https://github.com/101companies/101worker/tree/master/extractors) module.
 
 
 Afterwards [fragmentMetrics101meta](https://github.com/101companies/101worker/tree/master/modules/fragmentMetrics101meta) module will do further processing of on the files using the previous result.
@@ -374,26 +374,26 @@ A validator essentially parses the source code, it does not attempt compilation 
 
 ## extractors:
 
-A fact [extractor](https://github.com/101companies/101worker/tree/master/extractor) may be associated with each file. The `language` metadata key is used to determine what fact [extractor](https://github.com/101companies/101worker/tree/master/extractor) should be executed. All available extractors can be found in the [extractor](https://github.com/101companies/101worker/tree/master/extractor) direction of the [101worker](https://github.com/101companies/101worker) main folder and will be called by the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module.  They can be coded in any language. 
+A fact [extractor](https://github.com/101companies/101worker/tree/master/extractors) may be associated with each file. The `language` metadata key is used to determine what fact [extractor](https://github.com/101companies/101worker/tree/master/extractors) should be executed. All available extractors can be found in the [extractor](https://github.com/101companies/101worker/tree/master/extractors) direction of the [101worker](https://github.com/101companies/101worker) main folder and will be called by the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module.  They can be coded in any language. 
 
-There is one [extractor](https://github.com/101companies/101worker/tree/master/extractor) for supporting ten different types of source code files:
+There is one [extractor](https://github.com/101companies/101worker/tree/master/extractors) for supporting ten different types of source code files:
 
-* [../CSharp/extractor](https://github.com/101companies/101worker/tree/master/extractor/CSharp) extracts `C#` files.
-* [../HTML/extractor](https://github.com/101companies/101worker/tree/master/extractor/HTML) extracts `HTML` files.
-* [../Haskell/extractor](https://github.com/101companies/101worker/tree/master/extractor/Haskell) extracts `Haskell` files.
-* [../JSON/extractor](https://github.com/101companies/101worker/tree/master/extractor/JSON) extracts `JSON` files.
-* [../Java/extractor](https://github.com/101companies/101worker/tree/master/extractor/Java) extracts `Java` files.
-* [../JavaScript/extractor](https://github.com/101companies/101worker/tree/master/extractor/JavaScript) extracts `JavaScript` files.
-* [../Python/extractor](https://github.com/101companies/101worker/tree/master/extractor/Python) extracts `Python` files.
-* [../SQL/extractor](https://github.com/101companies/101worker/tree/master/extractor/SQL) extracts `SQL` files.
-* [../XMI/extractor](https://github.com/101companies/101worker/tree/master/extractor/XMI) extracts `XMI` files.
-* [../XSD/extractor](https://github.com/101companies/101worker/tree/master/extractor/XSD) extracts `XSD` files.
+* [../CSharp/extractor](https://github.com/101companies/101worker/tree/master/extractors/CSharp) extracts `C#` files.
+* [../HTML/extractor](https://github.com/101companies/101worker/tree/master/extractors/HTML) extracts `HTML` files.
+* [../Haskell/extractor](https://github.com/101companies/101worker/tree/master/extractors/Haskell) extracts `Haskell` files.
+* [../JSON/extractor](https://github.com/101companies/101worker/tree/master/extractors/JSON) extracts `JSON` files.
+* [../Java/extractor](https://github.com/101companies/101worker/tree/master/extractors/Java) extracts `Java` files.
+* [../JavaScript/extractor](https://github.com/101companies/101worker/tree/master/extractors/JavaScript) extracts `JavaScript` files.
+* [../Python/extractor](https://github.com/101companies/101worker/tree/master/extractors/Python) extracts `Python` files.
+* [../SQL/extractor](https://github.com/101companies/101worker/tree/master/extractors/SQL) extracts `SQL` files.
+* [../XMI/extractor](https://github.com/101companies/101worker/tree/master/extractors/XMI) extracts `XMI` files.
+* [../XSD/extractor](https://github.com/101companies/101worker/tree/master/extractors/XSD) extracts `XSD` files.
 
-In this manner, files may be processed by fact extractors and thereby enable further functionality. For instance, we may assume that the fact [extractor](https://github.com/101companies/101worker/tree/master/extractor) determines all imports made by some source code so that rules for constraining imports may rely on such facts as opposed to performing text matching of fact extraction themselves.
+In this manner, files may be processed by fact extractors and thereby enable further functionality. For instance, we may assume that the fact [extractor](https://github.com/101companies/101worker/tree/master/extractors) determines all imports made by some source code so that rules for constraining imports may rely on such facts as opposed to performing text matching of fact extraction themselves.
 
 ### Inside Module Description:
 
-The different modules depend on certain metadata. For example uses the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module the retrieved languages to determine which [extractor](https://github.com/101companies/101worker/tree/master/extractor) it should execute. This is the case since every language has a specific [extractor](##extractor). 
+The different modules depend on certain metadata. For example uses the [extract101meta](https://github.com/101companies/101worker/tree/master/modules/extract101meta) module the retrieved languages to determine which [extractor](https://github.com/101companies/101worker/tree/master/extractors) it should execute. This is the case since every language has a specific [extractor](##extractors). 
 That is the reason why every module that is involved with the processing of metadata has to insert specific values into the module description. First of all it has to tell the [runner](https://github.com/101companies/101worker/tree/master/tools/runner) which metadata the module depends on and which one is obtained (e.g matches receives: language). The reason we know that is the simple fact that there are specific patterns due to the architecture of rules. So it is safe to say that the suffix declares the language.
 
 The [predicates101meta](https://github.com/101companies/101worker/blob/master/modules/predicates101meta/) module, is an example of a how the [Language:101meta](#Language:101meta) is embedded in the modul description:
@@ -423,7 +423,7 @@ source: https://github.com/101companies/101worker/blob/master/modules/predicates
 |feature?	|			|g			|		|			|db				|						|								|
 |term		|			|			|		|			|				|						|								|
 |dominator	|			|r			|		|dok		|				|						|								|
-|[extractor](https://github.com/101companies/101worker/tree/master/extractor)	|b			|			|		|			|				|						|								|
+|[extractor](https://github.com/101companies/101worker/tree/master/extractors)	|b			|			|		|			|				|						|								|
 |concept	|db			|			|		|			|				|						|b								|
 |dominator?	|db			|db			|		|			|				|						|								|
 |assignment	|			|db			|db		|			|				|						|								|
