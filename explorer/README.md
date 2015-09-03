@@ -19,6 +19,8 @@ A novelty of 101worker is the inclusion of [Fact Extraction](https://github.com/
 
 The main work of 101explorer is to transform the given URI and collect the necessary information, which is usually scattered over multiple files due to the way  [101worker](https://github.com/101companies/101docs/tree/master/worker) computes and stores its results. 
 
+A regression test of 101explorer is available with [testAllExplorerEntities](https://github.com/101companies/101docs/blob/master/worker/modules/testAllExplorerEntities.md).
+
 ## Further reading
 
 101explorer has been the result of a [master thesis](http://softlang.uni-koblenz.de/LeinbergerThesis.pdf).
