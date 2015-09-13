@@ -63,7 +63,7 @@ The JSON output is designed to be machine readable:
 - The `{entity}_errors` dictionaries track all errors of a certain entity type.
   Entities are: `root`, `namespace`, `member`, `folder`, `file`, `fragment`.
   Errors per entity are then listed for each encounterd error type.
-- The `time_taken` property gives the time it took the explorer to generate and return the respective site.
+- The `time_taken` property is a float that gives the time in seconds it took the explorer to generate and return the respective site.
 
 ## Implementation
 
