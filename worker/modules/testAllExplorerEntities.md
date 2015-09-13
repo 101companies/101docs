@@ -4,9 +4,9 @@
 
 # DESCRIPTION
 
-Upon running this module it will recursively access all pages of 101explorer and analyse them for errors.
-A machine readable JSON listing of all encountered errors along with descriptions will be created at `${worker101dir}/modules/testAllExplorerEntities/results.json`.
-Afterwards this data will be rendered to a human readable and nicely formatted HTML document at `{views101dir}/testAllExplorerEntities.html`.
+Upon running this module it will recursively scan across all pages of 101explorer and analyse them for errors.
+A machine readable JSON listing of all encountered errors along with descriptions will be created at `${worker101dir}/modules/testAllExplorerEntities/report.json`.
+Afterwards this data will be rendered to a human readable and nicely formatted HTML document at `${views101dir}/testAllExplorerEntities.html`.
 
 This test module will access the explorer root site with URL `/`.
 It will then access all pages that this site links to.
@@ -18,17 +18,25 @@ All error checking happens server side, that is the network connection is not te
 
 Development currently happens on [101worker](https://github.com/101companies/101worker) branch `testAllExplorerEntities`, but is ready to be merged into `master`.
 
+## Configuration
+
+This module can be configured with file `${worker101dir}/modules/testAllExplorerEntities/config.py`.
+All values are documented within that file.
+
 ## Running
 
 Like any other module this one is started with each normal worker cycle.
 
-If you want to explicitly run this module do:
+By default this module is executed in incremental mode.
+That is, with each incarnation a preconfigured time is spent collection errors.
+Afterwards the current state of the module is made persistent and resumed at the next incarnation.
 
-    RUNONLY=testAllExplorerEntities make production.run
+If you want to explicitly force a full error analysis of all sites of the explorer, do:
 
-The module will use all available cores during execution.
-The currently tested runtime on a local machine is about 6 Minutes (4x 3.4 GHz), but expected to be faster on the actual server.
-Therefore we deemed that this module can be included in the normal worker cycle,.
+    cd ${worker101dir}/modules/testAllExplorerEntities
+    ./force_full_run.sh
+
+This module will use all available cores during execution.
 
 ## Errors types
 
@@ -55,6 +63,7 @@ The JSON output is designed to be machine readable:
 - The `{entity}_errors` dictionaries track all errors of a certain entity type.
   Entities are: `root`, `namespace`, `member`, `folder`, `file`, `fragment`.
   Errors per entity are then listed for each encounterd error type.
+- The `time_taken` property gives the time it took the explorer to generate and return the respective site.
 
 ## Implementation
 
@@ -65,6 +74,16 @@ This script also generates the HTML output based on the JSON.
 
 As the execution of the Django test takes quite a bit of time, it is only run if the environment variable `TEST_ALL_EXPLORER_ENTITIES` is set by the module script.
 So normally executing all explorer tests will not run this, are to not slow down TDD.
+
+Explanation of the files creates to persist state between executions.
+If you somehow decide that the program reached an undesirable state, you can just remove these files before startup and the program will recreate them.
+
+* `assigned_resources.json`: This file tracks all oberved URLs linked to by the explorer.
+  It is necessary to track for `ResourceAlreadyAssignedError`.
+* `unchecked_entities.json`: This file is a materialized view of the queue, that keeps track of sites to visit.
+  Once this queue is depleted, checking start at the root entity again.
+* `entity_errors.json`: This file keeps track of all encountered errors.
+  Is a mapping of URL to observed error.
 
 # JUSTIFICATION OF EXISTENCE
 
